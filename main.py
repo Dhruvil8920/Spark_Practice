@@ -265,3 +265,28 @@ condf.show()
 # Cache and persist
 
 condf.persist(pyspark.StorageLevel.DISK_ONLY)
+
+# ArrayType
+
+from pyspark.sql.types import ArrayType, StringType, StructType, StructField
+
+data2 = [("alpha", ["morning", "valo"]), ("beta", ["afternoon", "csgo"]), ("gama", ["evening", "ark"]),
+         ("delta", ["night", "genshin"])]
+sch = StructType([StructField("name", StringType()),
+                 StructField("game", ArrayType(StringType()))])
+
+df5 = spark.createDataFrame(data2, sch)
+df5.show()
+df5.select(df5.game[0]).show()
+df5.printSchema()
+
+# MapType
+
+from pyspark.sql.types import MapType, StringType, StructType, StructField
+
+data1 = [("alpha", {"morning": "valo"}), ("beta", {"afternoon": "csgo"}), ("gama", {"evening": "ark"}),
+         ("delta", {"night": "genshin"})]
+sch = StructType([StructField("name", StringType()),
+                 StructField("game", MapType(StringType(), StringType()))])
+
+df4 = spark.createDataFrame(data1, sch)
