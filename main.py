@@ -290,3 +290,4 @@ sch = StructType([StructField("name", StringType()),
                  StructField("game", MapType(StringType(), StringType()))])
 
 df4 = spark.createDataFrame(data1, sch)
+df4.show()
