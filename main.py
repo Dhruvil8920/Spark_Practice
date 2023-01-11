@@ -291,3 +291,10 @@ sch = StructType([StructField("name", StringType()),
 
 df4 = spark.createDataFrame(data1, sch)
 df4.show()
+
+# Explode
+
+from pyspark.sql.functions import explode
+
+df6 = df5.withColumn("games", explode("game"))
+df6.show()
