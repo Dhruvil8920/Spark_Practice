@@ -312,8 +312,8 @@ from pyspark.sql.functions import to_date, datediff, current_date
 
 data3 = [("Alice", 0, "2000-12-10"), ("Bob", 1, "1996-04-21"), ("Charlie", 2, "1990-08-15"), ("Fred", 3, "2004-03-27")]
 st3 = ["name", "id", "dob"]
-ef = spark.createDataFrame(data=data3,  schema=st3)
-ef.show()
+ef2 = spark.createDataFrame(data=data3,  schema=st3)
+ef2.show()
 
 
 df8 = ef.withColumn("age", datediff(current_date(), "dob") / 365)
@@ -324,3 +324,15 @@ df8.show()
 df9 = spark.read.json("C:/Users/dhruv/Downloads/data.json", multiLine=True)
 
 df9.show()
+
+# Filter bad raws
+
+
+data4 = [("Alice", None, "2000-12-10"), (None, 1, "1996-04-21"), ("Charlie", 2, "1990-08-15"), ("Fred", 3, None)]
+st3 = ["name", "id", "dob"]
+ef3 = spark.createDataFrame(data=data4,  schema=st3)
+
+ef3.show()
+
+ef3.na.drop(how="any").show()
+ef3.filter()
