@@ -318,3 +318,9 @@ ef.show()
 
 df8 = ef.withColumn("age", datediff(current_date(), "dob") / 365)
 df8.show()
+
+# Read Json
+
+df9 = spark.read.json("C:/Users/dhruv/Downloads/data.json", multiLine=True)
+
+df9.show()
