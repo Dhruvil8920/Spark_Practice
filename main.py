@@ -297,6 +297,7 @@ df4.show()
 from pyspark.sql.functions import explode
 
 df6 = df5.withColumn("games", explode("game"))
+
 df6.show()
 
 # Reading Parquet
