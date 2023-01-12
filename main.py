@@ -298,3 +298,8 @@ from pyspark.sql.functions import explode
 
 df6 = df5.withColumn("games", explode("game"))
 df6.show()
+
+# Reading Parquet
+
+df7 = spark.read.parquet("C:/Users/dhruv/Downloads/userdata1.parquet")
+df7.show()
