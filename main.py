@@ -302,4 +302,5 @@ df6.show()
 # Reading Parquet
 
 df7 = spark.read.parquet("C:/Users/dhruv/Downloads/userdata1.parquet")
+
 df7.show()
